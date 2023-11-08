@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace OSA.Backend.Api.Two.Controllers;
+namespace OSA.Backend.StarshipApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ApiTwoController
+public class StarshipController
 {
     
 }

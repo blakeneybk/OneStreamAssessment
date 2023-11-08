@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OSA.Backend.Api.One.Client\OSA.Backend.Api.One.Client.csproj" />
-    <ProjectReference Include="..\OSA.Backend.Api.Two.Client\OSA.Backend.Api.Two.Client.csproj" />
+    <ProjectReference Include="..\OSA.Backend.CharacterApi.Client\OSA.Backend.CharacterApi.Client.csproj" />
+    <ProjectReference Include="..\OSA.Backend.StarshipApi.Client\OSA.Backend.StarshipApi.Client.csproj" />
   </ItemGroup>
 
 </Project>

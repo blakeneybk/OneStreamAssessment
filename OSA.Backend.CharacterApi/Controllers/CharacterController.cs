@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace OSA.Backend.Api.One.Controllers;
+namespace OSA.Backend.CharacterApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ApiOneController
+public class CharacterController
 {
     
 }

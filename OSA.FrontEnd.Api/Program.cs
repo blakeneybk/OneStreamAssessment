@@ -1,6 +1,5 @@
-
-using OSA.Backend.Api.One.Client;
-using OSA.Backend.Api.Two.Client;
+using OSA.Backend.CharacterApi.Client;
+using OSA.Backend.StarshipApi.Client;
 
 namespace OSA.FrontEnd.Api
 {
@@ -17,21 +16,21 @@ namespace OSA.FrontEnd.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             // Retrieve base addresses from configuration
-            var backendOneBaseAddressConfig = builder.Configuration["BackendOneService:OverrideBaseAddress"];
-            var backendTwoBaseAddressConfig = builder.Configuration["BackendTwoService:OverrideBaseAddress"];
+            var backendOneBaseAddressConfig = builder.Configuration["CharacterApiService:OverrideBaseAddress"];
+            var backendTwoBaseAddressConfig = builder.Configuration["StarshipApiService:OverrideBaseAddress"];
 
-            // Register BackendOne API client service
-            builder.Services.AddBackendOneApiClientService(
+            // Register CharacterApi API client service
+            builder.Services.AddCharacterApiClientService(
                 !string.IsNullOrWhiteSpace(backendOneBaseAddressConfig) 
                     ? new Uri(backendOneBaseAddressConfig) 
-                    : BackendOneApiClientService.DefaultBaseAddress
+                    : CharacterApiClientService.DefaultBaseAddress
             );
 
-            // Register BackendTwo API client service
-            builder.Services.AddBackendTwoApiClientService(
+            // Register StarshipApi API client service
+            builder.Services.AddStarshipApiClientService(
                 !string.IsNullOrWhiteSpace(backendTwoBaseAddressConfig) 
                     ? new Uri(backendTwoBaseAddressConfig) 
-                    : BackendTwoApiClientService.DefaultBaseAddress
+                    : StarshipApiClientService.DefaultBaseAddress
             );
 
             var app = builder.Build();

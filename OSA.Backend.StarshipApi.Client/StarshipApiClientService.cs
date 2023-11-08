@@ -1,17 +1,17 @@
-﻿namespace OSA.Backend.Api.Two.Client
+﻿namespace OSA.Backend.StarshipApi.Client
 {
-    public class BackendTwoApiClientService : IBackendTwoApiClientService
+    public class StarshipApiClientService : IStarshipApiClientService
     {
         private readonly HttpClient _httpClient;
 
         // Public static readonly field for the default base address
         public static readonly Uri DefaultBaseAddress = new Uri("http://osa.backend.api.one");
 
-        public BackendTwoApiClientService(HttpClient httpClient)
+        public StarshipApiClientService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        // Implementation of IBackendOneService interface methods...
+        // Implementation of ICharacterApiService interface methods...
     }
 }

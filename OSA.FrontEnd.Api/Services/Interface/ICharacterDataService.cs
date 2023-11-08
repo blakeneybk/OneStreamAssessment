@@ -1,5 +1,5 @@
 ﻿namespace OSA.FrontEnd.Api.Services.Interface;
 
-public interface IBackendApiTwoService
+public interface ICharacterDataService
 {
 }
