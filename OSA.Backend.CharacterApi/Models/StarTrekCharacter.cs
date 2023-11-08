@@ -1,4 +1,4 @@
-﻿namespace OSA.Backend.Api.One.Models
+﻿namespace OSA.Backend.CharacterApi.Models
 {
     public class StarTrekCharacter: IDataModel
     {

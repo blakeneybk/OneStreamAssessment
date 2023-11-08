@@ -1,5 +1,5 @@
 
-namespace OSA.Backend.Api.One
+namespace OSA.Backend.CharacterApi
 {
     public class Program
     {

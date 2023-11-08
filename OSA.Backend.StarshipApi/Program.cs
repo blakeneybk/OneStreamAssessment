@@ -1,5 +1,5 @@
 
-namespace OSA.Backend.Api.Two
+namespace OSA.Backend.StarshipApi
 {
     public class Program
     {

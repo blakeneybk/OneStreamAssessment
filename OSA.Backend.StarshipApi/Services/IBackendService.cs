@@ -1,4 +1,4 @@
-﻿namespace OSA.Backend.Api.Two.Services
+﻿namespace OSA.Backend.StarshipApi.Services
 {
     public interface IBackendService
     {

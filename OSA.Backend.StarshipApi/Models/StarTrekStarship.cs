@@ -1,4 +1,4 @@
-﻿namespace OSA.Backend.Api.Two.Models
+﻿namespace OSA.Backend.StarshipApi.Models
 {
     public class StarTrekStarship: IDataModel
     {

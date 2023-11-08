@@ -1,4 +1,4 @@
-﻿namespace OSA.Backend.Api.One.Services
+﻿namespace OSA.Backend.CharacterApi.Services
 {
     public class MockBackendService : IBackendService
     {
