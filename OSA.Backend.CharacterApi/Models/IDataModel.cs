@@ -1,6 +1,7 @@
-﻿namespace OSA.Backend.CharacterApi.Models;
-
-public interface IDataModel
+﻿namespace OSA.Backend.CharacterApi.Models
 {
-    //marker interface
+    public interface IDataModel
+    {
+        public int Id { get; set; }
+    }
 }

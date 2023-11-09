@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OSA.FrontEnd.Api.DtoModels;
-using OSA.FrontEnd.Api.Services.Interface;
 
 namespace OSA.FrontEnd.Api.Controllers
 {

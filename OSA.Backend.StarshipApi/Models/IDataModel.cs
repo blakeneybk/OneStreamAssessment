@@ -2,6 +2,6 @@
 {
     public interface IDataModel
     {
-        //marker interface
+        public int Id { get; set; }
     }
 }

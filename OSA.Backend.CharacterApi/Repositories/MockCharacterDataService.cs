@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using OSA.Backend.CharacterApi.Models;
+﻿using OSA.Backend.CharacterApi.Models;
 
-namespace OSA.Backend.CharacterApi.Services
+namespace OSA.Backend.CharacterApi.Repositories
 {
-    public class MockCharacterDataService : IDataService
+    public class MockCharacterRepository : BaseMockRepository<StarTrekCharacter>
     {
-        private readonly List<StarTrekCharacter> characters = new();
-        private int nextId = 1;
+        private readonly int nextId = 1;
 
-        public MockCharacterDataService()
+        public MockCharacterRepository()
         {
             // Initialize with some characters
-            characters.AddRange(new[]
+            entities.AddRange(new[]
             {
             // Characters from the Original Series
             new StarTrekCharacter { Id = nextId++, Name = "James T. Kirk", Rank = "Captain", Species = "Human", Assignment = "USS Enterprise NCC-1701" },
@@ -54,56 +49,45 @@ namespace OSA.Backend.CharacterApi.Services
             });
         }
 
-        public async Task<IEnumerable<StarTrekCharacter>> GetAllCharactersAsync()
+        // Override the base class GetAllAsync method
+        public override async Task<IEnumerable<StarTrekCharacter>> GetAllAsync()
         {
             await SlowDown(); // simulate delay
-            return characters.AsEnumerable();
+            return await base.GetAllAsync();
         }
 
-        public async Task<StarTrekCharacter> GetCharacterAsync(int id)
+        // Override the base class GetAsync method
+        public override async Task<StarTrekCharacter> GetAsync(int id)
         {
             await SlowDown(); // simulate delay
-            var character = characters.FirstOrDefault(c => c.Id == id);
-            return character;
+            return await base.GetAsync(id);
         }
 
-        public async Task<StarTrekCharacter> AddCharacterAsync(StarTrekCharacter character)
+        // Override the base class AddAsync method
+        public override async Task<StarTrekCharacter> AddAsync(StarTrekCharacter entity)
         {
             await SlowDown(); // simulate delay
-            character.Id = nextId++;
-            characters.Add(character);
-            return character;
+            return await base.AddAsync(entity);
         }
 
-        public async Task<bool> UpdateCharacterAsync(int id, StarTrekCharacter updatedCharacter)
+        // Override the base class UpdateAsync method
+        public override async Task<bool> UpdateAsync(int id, StarTrekCharacter entity)
         {
             await SlowDown(); // simulate delay
-            var index = characters.FindIndex(c => c.Id == id);
-            if (index != -1)
-            {
-                characters[index] = updatedCharacter;
-                return true;
-            }
-            return false;
+            return await base.UpdateAsync(id, entity);
         }
 
-        public async Task<bool> DeleteCharacterAsync(int id)
+        // Override the base class DeleteAsync method
+        public override async Task<bool> DeleteAsync(int id)
         {
             await SlowDown(); // simulate delay
-            var character = characters.FirstOrDefault(c => c.Id == id);
-            if (character != null)
-            {
-                characters.Remove(character);
-                return true;
-            }
-            return false;
+            return await base.DeleteAsync(id);
         }
-
         // All character data operations are slower because puny humanoids are slower than starships!
         private async Task SlowDown()
         {
-            // Simulate a delay of 4 seconds
-            await Task.Delay(4000);
+            // Simulate a delay of 3 seconds
+            await Task.Delay(3000);
         }
     }
 }
