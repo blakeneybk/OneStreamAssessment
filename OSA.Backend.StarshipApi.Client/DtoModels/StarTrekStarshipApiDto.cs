@@ -1,6 +1,6 @@
 ﻿namespace OSA.Backend.StarshipApi.Client.DtoModels
 {
-    public class StarTrekStarshipDto
+    public class StarTrekStarshipApiDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

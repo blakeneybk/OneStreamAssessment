@@ -14,18 +14,18 @@ namespace OSA.Backend.StarshipApi.Client
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<IEnumerable<StarTrekStarshipDto>?> GetAllStarshipsAsync()
+        public async Task<IEnumerable<StarTrekStarshipApiDto>?> GetAllStarshipsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<StarTrekStarshipDto>>("starship");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<StarTrekStarshipApiDto>>("starship");
         }
 
-        public async Task<StarTrekStarshipDto?> GetStarshipAsync(int id)
+        public async Task<StarTrekStarshipApiDto?> GetStarshipAsync(int id)
         {
             var response = await _httpClient.GetAsync($"starship/{id}");
 
             if (response.IsSuccessStatusCode)
             {
-                return await response.Content.ReadFromJsonAsync<StarTrekStarshipDto>();
+                return await response.Content.ReadFromJsonAsync<StarTrekStarshipApiDto>();
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -38,14 +38,14 @@ namespace OSA.Backend.StarshipApi.Client
             }
         }
 
-        public async Task<StarTrekStarshipDto?> AddStarshipAsync(StarTrekStarshipDto starship)
+        public async Task<StarTrekStarshipApiDto?> AddStarshipAsync(StarTrekStarshipApiDto starship)
         {
             var response = await _httpClient.PostAsJsonAsync("starship", starship);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<StarTrekStarshipDto>();
+            return await response.Content.ReadFromJsonAsync<StarTrekStarshipApiDto>();
         }
 
-        public async Task<bool> UpdateStarshipAsync(int id, StarTrekStarshipDto starship)
+        public async Task<bool> UpdateStarshipAsync(int id, StarTrekStarshipApiDto starship)
         {
             var response = await _httpClient.PutAsJsonAsync($"starship/{id}", starship);
             return response.IsSuccessStatusCode;
