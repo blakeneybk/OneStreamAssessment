@@ -5,6 +5,10 @@ using OSA.FrontEnd.Api.Services.Interface;
 
 namespace OSA.FrontEnd.Api.Services
 {
+    /// <summary>
+    /// An implementation of IStarshipService that utilizes the client library client service provided for consuming the StarshipApi
+    /// </summary>
+    /// <seealso cref="OSA.FrontEnd.Api.Services.Interface.IStarshipService" />
     public class StarshipApiService : IStarshipService
     {
         private readonly IStarshipApiClientService client;

@@ -5,6 +5,10 @@ using OSA.FrontEnd.Api.Services.Interface;
 
 namespace OSA.FrontEnd.Api.Services
 {
+    /// <summary>
+    /// An implementation of ICharacterService that utilizes the client library client service provided for consuming the CharacterApi
+    /// </summary>
+    /// <seealso cref="OSA.FrontEnd.Api.Services.Interface.ICharacterService" />
     public class CharacterApiService : ICharacterService
     {
         private readonly ICharacterApiClientService client;

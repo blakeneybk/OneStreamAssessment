@@ -3,10 +3,15 @@ using OSA.Backend.CharacterApi.Client.DtoModels;
 
 namespace OSA.Backend.CharacterApi.Client
 {
+    /// <summary>
+    /// A client service to be used by API consumers to communicate with CharacterApi
+    /// </summary>
+    /// <seealso cref="OSA.Backend.CharacterApi.Client.ICharacterApiClientService" />
     public class CharacterApiClientService : ICharacterApiClientService
     {
         private readonly HttpClient _httpClient;
 
+        //This is to be accessible to consuimers of the client to give them a default option that they can use or override
         public static readonly Uri DefaultBaseAddress = new Uri("https://localhost:51001/api/");
 
         public CharacterApiClientService(HttpClient httpClient)
@@ -14,11 +19,13 @@ namespace OSA.Backend.CharacterApi.Client
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
+        //GET api/character
         public async Task<IEnumerable<StarTrekCharacterApiDto>?> GetAllCharactersAsync()
         {
             return await _httpClient.GetFromJsonAsync<IEnumerable<StarTrekCharacterApiDto>>("character");
         }
 
+        //GET api/character/{id}
         public async Task<StarTrekCharacterApiDto?> GetCharacterAsync(int id)
         {
             var response = await _httpClient.GetAsync($"character/{id}");
@@ -38,6 +45,7 @@ namespace OSA.Backend.CharacterApi.Client
             }
         }
 
+        //POST api/character with body
         public async Task<StarTrekCharacterApiDto?> AddCharacterAsync(StarTrekCharacterApiDto character)
         {
             var response = await _httpClient.PostAsJsonAsync("character", character);
@@ -45,12 +53,14 @@ namespace OSA.Backend.CharacterApi.Client
             return await response.Content.ReadFromJsonAsync<StarTrekCharacterApiDto>();
         }
 
+        //PUT api/character/{id} with body
         public async Task<bool> UpdateCharacterAsync(int id, StarTrekCharacterApiDto character)
         {
             var response = await _httpClient.PutAsJsonAsync($"character/{id}", character);
             return response.IsSuccessStatusCode;
         }
 
+        //DELETE api/character/{id}
         public async Task<bool> DeleteCharacterAsync(int id)
         {
             var response = await _httpClient.DeleteAsync($"character/{id}");
