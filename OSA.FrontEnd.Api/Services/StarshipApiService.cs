@@ -5,11 +5,11 @@ using OSA.FrontEnd.Api.Services.Interface;
 
 namespace OSA.FrontEnd.Api.Services
 {
-    public class StarshipApiDataService : IStarshipDataService
+    public class StarshipApiService : IStarshipService
     {
         private readonly IStarshipApiClientService client;
 
-        public StarshipApiDataService(IStarshipApiClientService client)
+        public StarshipApiService(IStarshipApiClientService client)
         {
             this.client = client;
         }

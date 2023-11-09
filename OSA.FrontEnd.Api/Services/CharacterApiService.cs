@@ -5,11 +5,11 @@ using OSA.FrontEnd.Api.Services.Interface;
 
 namespace OSA.FrontEnd.Api.Services
 {
-    public class CharacterApiDataService : ICharacterDataService
+    public class CharacterApiService : ICharacterService
     {
         private readonly ICharacterApiClientService client;
 
-        public CharacterApiDataService(ICharacterApiClientService client)
+        public CharacterApiService(ICharacterApiClientService client)
         {
             this.client = client;
         }

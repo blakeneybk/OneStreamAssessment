@@ -1,5 +1,7 @@
 using OSA.Backend.CharacterApi.Client;
 using OSA.Backend.StarshipApi.Client;
+using OSA.FrontEnd.Api.Services;
+using OSA.FrontEnd.Api.Services.Interface;
 
 namespace OSA.FrontEnd.Api
 {
@@ -15,6 +17,7 @@ namespace OSA.FrontEnd.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
             // Retrieve base addresses from configuration
             var backendOneBaseAddressConfig = builder.Configuration["CharacterApiService:OverrideBaseAddress"];
             var backendTwoBaseAddressConfig = builder.Configuration["StarshipApiService:OverrideBaseAddress"];
@@ -32,6 +35,10 @@ namespace OSA.FrontEnd.Api
                     ? new Uri(backendTwoBaseAddressConfig) 
                     : StarshipApiClientService.DefaultBaseAddress
             );
+
+            //bind services
+            builder.Services.AddSingleton<ICharacterService, CharacterApiService>();
+            builder.Services.AddSingleton<IStarshipService, StarshipApiService>();
 
             var app = builder.Build();
 

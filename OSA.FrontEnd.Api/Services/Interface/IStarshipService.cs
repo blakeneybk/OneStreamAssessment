@@ -2,7 +2,7 @@
 
 namespace OSA.FrontEnd.Api.Services.Interface;
 
-public interface IStarshipDataService
+public interface IStarshipService
 {
     Task<IEnumerable<StarTrekStarshipDto>?> GetAllStarshipsAsync();
     Task<StarTrekStarshipDto?> GetStarshipAsync(int id);

@@ -2,7 +2,7 @@
 
 namespace OSA.FrontEnd.Api.Services.Interface
 {
-    public interface ICharacterDataService
+    public interface ICharacterService
     {
         Task<IEnumerable<StarTrekCharacterDto>?> GetAllCharactersAsync();
         Task<StarTrekCharacterDto?> GetCharacterAsync(int id);
